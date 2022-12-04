@@ -27,4 +27,9 @@ public class ManufacturerController {
         return ResponseEntity.status(HttpStatus.OK).body(savedManufacturers);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Manufacturer> getManufacturerBasedOnId(@PathVariable int id){
+        Manufacturer dbManufacturer = manufacturerService.getManufacturerForId(id);
+        return ResponseEntity.ok(dbManufacturer);
+    }
 }
