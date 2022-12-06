@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table(name = "manufacturer")
@@ -21,4 +22,5 @@ public class Manufacturer {
     private String manufacturerName;
     @Column(name = "country_of_origin")
     private String countryOfOrigin;
+
 }
