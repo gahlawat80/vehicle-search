@@ -29,4 +29,10 @@ public class VehicleDetailsController {
     public ResponseEntity<VehicleDetail> fetchVehicleById(@PathVariable int vehicleId) throws VehicleDetailsNotFound {
         return ResponseEntity.ok(vehicleDetailService.getVehicleById(vehicleId));
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ClientVehicleDetail>> searchVehicleByFilterCriteria(@RequestParam String modelYear,@RequestParam String brand,@RequestParam String model,@RequestParam String trim,@RequestParam String price){
+        List<ClientVehicleDetail> filteredVehicles = vehicleDetailService.fetchVehicleDetailByCriteria(modelYear,brand,model,trim,price);
+        return new ResponseEntity<>(filteredVehicles,HttpStatus.OK);
+    }
 }
