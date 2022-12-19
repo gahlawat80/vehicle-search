@@ -25,7 +25,10 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+        http.authorizeRequests()
+                .antMatchers("/api/v1/manufacturers").hasAnyRole("USER","ADMIN")
+                .antMatchers("/api/v1/vechicle-market-price").hasRole("ADMIN")
+                .anyRequest().permitAll().and().httpBasic();
     }
 
     @Bean
